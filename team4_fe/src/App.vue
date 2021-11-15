@@ -15,44 +15,29 @@
       </v-container>
     </v-main>
 
-    <v-bottom-navigation app color="indigo" v-if="flag">
-      <v-btn>
-        <span>Recents</span>
-
-        <v-icon>mdi-history</v-icon>
-      </v-btn>
-
-      <v-btn>
-        <span>Favorites</span>
-
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
-
-      <v-btn>
-        <span>Nearby</span>
-
-        <v-icon>mdi-map-marker</v-icon>
-      </v-btn>
+    <v-bottom-navigation app v-if="flag">
+      <main-footer />
     </v-bottom-navigation>
   </v-app>
 </template>
 
 <script>
+import MainFooter from "./components/footer/MainFooter.vue";
 import MainHeader from "./components/headers/MainHeader.vue";
 export default {
   name: "App",
 
   data: () => ({
     swipeDirection: "None",
-    flag : true
+    flag: true,
   }),
-  components: { MainHeader },
+  components: { MainHeader, MainFooter },
   methods: {
     swipe(direction) {
       this.swipeDirection = direction;
-      if(this.swipeDirection === "Down"){
+      if (this.swipeDirection === "Down") {
         this.flag = true;
-      }else{
+      } else {
         this.flag = false;
       }
     },
